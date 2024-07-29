@@ -1,35 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useRoutes } from "react-router-dom";
+import Homepage from "./pages/Homepage";
+import ProductDetail from "./pages/ProductDetail";
+import NotFound from "./pages/NotFound";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Admin from "./pages/admin";
+import LayoutAdmin from "./layouts/LayoutAdmin";
+import Dashboard from "./pages/admin/Dashboard";
+import AdminProductList from "./pages/admin/product/List";
+import LayoutClient from "./layouts/LayoutClient";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import AdminAddProduct from "./pages/admin/product/Add";
+import AdminEditProduct from "./pages/admin/product/Edit";
+
+const routeConfig = [
+  {
+    path: "",
+    element: <LayoutClient />,
+    children: [
+      { path: "", element: <Homepage /> },
+      { path: "/product/:id", element: <ProductDetail /> },
+      { path: "/register", element: <Register /> },
+      { path: "/login", element: <Login /> },
+    ],
+  },
+
+  {
+    path: "/admin",
+    element: <LayoutAdmin />,
+    children: [
+      {
+        path: "",
+        element: <Admin />,
+      },
+      {
+        path: "dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "product/list",
+        element: <AdminProductList />,
+      },
+      {
+        path: "product/add",
+        element: <AdminAddProduct />,
+      },
+      {
+        path: "product/edit/:id",
+        element: <AdminEditProduct />,
+      },
+    ],
+  },
+  { path: "*", element: <NotFound /> },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const routes = useRoutes(routeConfig);
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <ToastContainer />
+      {routes}
+    </div>
+  );
 }
 
-export default App
+export default App;

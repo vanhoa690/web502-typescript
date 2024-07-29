@@ -1,0 +1,45 @@
+{
+  "products": [
+    {
+      "title": "ten update",
+      "price": "222",
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "desc": "mo ta",
+      "isShowProduct": true,
+      "category": "2",
+      "id": 17
+    },
+    {
+      "title": "ten sp",
+      "price": "6",
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "desc": "5",
+      "isShowProduct": true,
+      "category": "3",
+      "id": 18
+    },
+    {
+      "title": "rrrr",
+      "price": "3",
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "desc": "3",
+      "isShowProduct": false,
+      "category": "2",
+      "id": 19
+    }
+  ],
+  "users": [
+    {
+      "email": "hoadv21@fpt.edu.vn",
+      "password": "$2a$10$bDI8ckBjn.r//ma4KorUMux1tQUgsyQDZIN6.QRCYw0PV2JTO77p.",
+      "username": "hoadv",
+      "id": 1
+    },
+    {
+      "email": "hoadv211@fpt.edu.vn",
+      "password": "$2a$10$sHDI1ZsC7nw1y.N.BWlhKunh1pnYREi4QsanxcoAojvHbW0JwSOiC",
+      "username": "hoadv",
+      "id": 2
+    }
+  ]
+}
