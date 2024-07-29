@@ -1,17 +1,26 @@
 import { useForm } from "react-hook-form";
-import { ProductInputs } from "../types/Product";
+import { Product, ProductInputs } from "../types/Product";
+import { useEffect } from "react";
+import axios from "axios";
 
 type ProductFormProps = {
+  product?: Product;
   onSubmit: (data: ProductInputs) => void;
 };
 
-function ProductForm({ onSubmit }: ProductFormProps) {
+function ProductForm({ product, onSubmit }: ProductFormProps) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ProductInputs>();
 
+  useEffect(() => {
+    if (!product) return;
+    reset(product);
+  }, [product]);
+  
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {/* Label + Input text*/}
@@ -98,7 +107,9 @@ function ProductForm({ onSubmit }: ProductFormProps) {
         </select>
       </div>
 
-      <button className="btn btn-primary">Add Product</button>
+      <button className="btn btn-primary">
+        {product ? "Edit" : "Add"} Product
+      </button>
     </form>
   );
 }
